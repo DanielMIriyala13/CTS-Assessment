@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventPortal - Bootstrap Edition</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar-brand {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .hero-section {
+            background-color: #1a237e;
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .hero-section p {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #1a237e;
+            margin-bottom: 35px;
+            font-size: 28px;
+        }
+
+        .card-img-top {
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .contact-section {
+            background-color: #e8eaf6;
+        }
+
+        .site-footer {
+            background-color: #1a237e;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg" style="background-color: #1a237e;">
+        <div class="container">
+            <a class="navbar-brand text-white" href="#">EventPortal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#events">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#register">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="container">
+            <h1>Welcome to EventPortal</h1>
+            <p>Discover and register for exciting events near you.</p>
+            <a href="#events" class="btn btn-light btn-lg me-2">Browse Events</a>
+            <a href="#register" class="btn btn-outline-light btn-lg">Register Now</a>
+        </div>
+    </section>
+
+    <section class="py-5" id="events">
+        <div class="container">
+            <h2 class="section-title">Upcoming Events</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="../HTML/images/workshop.png" class="card-img-top" alt="Tech Workshop">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">Tech Workshop</h5>
+                            <p class="card-text text-muted mb-1"><small>August 10, 2025</small></p>
+                            <p class="card-text text-muted mb-2"><small>Chennai Convention Centre</small></p>
+                            <p class="card-text">Learn the basics of web development in this hands-on workshop.</p>
+                        </div>
+                        <div class="card-footer bg-white border-0">
+                            <a href="#register" class="btn w-100" style="background-color:#1a237e; color:white;">Register Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="../HTML/images/sports.png" class="card-img-top" alt="Sports Day">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">Annual Sports Day</h5>
+                            <p class="card-text text-muted mb-1"><small>August 18, 2025</small></p>
+                            <p class="card-text text-muted mb-2"><small>City Stadium, Bangalore</small></p>
+                            <p class="card-text">Join us for a fun-filled day of sports and team activities.</p>
+                        </div>
+                        <div class="card-footer bg-white border-0">
+                            <a href="#register" class="btn w-100" style="background-color:#1a237e; color:white;">Register Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="../HTML/images/cultural.png" class="card-img-top" alt="Cultural Fest">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">Cultural Fest</h5>
+                            <p class="card-text text-muted mb-1"><small>August 25, 2025</small></p>
+                            <p class="card-text text-muted mb-2"><small>Open Air Theatre, Mumbai</small></p>
+                            <p class="card-text">Celebrate culture and creativity with performances and art.</p>
+                        </div>
+                        <div class="card-footer bg-white border-0">
+                            <a href="#register" class="btn w-100" style="background-color:#1a237e; color:white;">Register Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light" id="register">
+        <div class="container">
+            <h2 class="section-title">Event Registration</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card shadow-sm p-4">
+                        <div id="form-alert" class="alert alert-success d-none">
+                            Registration submitted successfully!
+                        </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label fw-bold">Full Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter your full name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label fw-bold">Email Address</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label fw-bold">Phone Number</label>
+                            <input type="text" class="form-control" id="phone" placeholder="Enter your phone number">
+                        </div>
+                        <div class="mb-3">
+                            <label for="event" class="form-label fw-bold">Select Event</label>
+                            <select class="form-select" id="event">
+                                <option value="">-- Select an Event --</option>
+                                <option value="Tech Workshop">Tech Workshop</option>
+                                <option value="Annual Sports Day">Annual Sports Day</option>
+                                <option value="Cultural Fest">Cultural Fest</option>
+                            </select>
+                        </div>
+                        <button type="button" class="btn w-100" style="background-color:#1a237e; color:white;" onclick="submitForm()">
+                            Submit Registration
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 contact-section text-center" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="mb-1">Email: events@eventportal.com</p>
+            <p class="mb-1">Phone: +91 98765 43210</p>
+            <p>Address: 123 Event Street, Chennai, India</p>
+        </div>
+    </section>
+
+    <footer class="site-footer text-center py-3">
+        <p class="mb-0">&copy; 2025 EventPortal. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function submitForm() {
+            var name = document.getElementById("name").value.trim();
+            var email = document.getElementById("email").value.trim();
+            var phone = document.getElementById("phone").value.trim();
+            var event = document.getElementById("event").value;
+
+            if (name === "" || email === "" || phone === "" || event === "") {
+                alert("Please fill in all fields before submitting.");
+                return;
+            }
+
+            var alertBox = document.getElementById("form-alert");
+            alertBox.classList.remove("d-none");
+
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("phone").value = "";
+            document.getElementById("event").value = "";
+
+            setTimeout(function () {
+                alertBox.classList.add("d-none");
+            }, 3500);
+        }
+    </script>
+
+</body>
+</html>

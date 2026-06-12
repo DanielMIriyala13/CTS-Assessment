@@ -1,18 +1,12 @@
-using System.ComponentModel.DataAnnotations;
+namespace ProductService.Models;
 
-namespace ProductService.Models
+public class Product
 {
-    public class Product
-    {
-        [Key]
-        public int ProductId { get; set; }
+    public int ProductId { get; set; }
 
-        public string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
 
-        public decimal Price { get; set; }
+    public decimal Price { get; set; }
 
-        public int Stock { get; set; }
-
-        public int CategoryId { get; set; }
-    }
+    public int Stock { get; set; }
 }

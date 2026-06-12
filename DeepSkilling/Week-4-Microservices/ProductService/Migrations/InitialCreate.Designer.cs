@@ -11,7 +11,7 @@ using ProductService.Data;
 namespace ProductService.Migrations
 {
     [DbContext(typeof(ProductDbContext))]
-    [Migration("20260723045051_InitialCreate")]
+    [Migration("InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

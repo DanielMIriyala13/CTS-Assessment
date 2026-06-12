@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventPortal - JavaScript Edition</title>
+    <link rel="stylesheet" href="EventPortal.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-content">
+            <h1 class="logo">EventPortal</h1>
+            <nav class="main-nav">
+                <a href="#events">Events</a>
+                <a href="#register">Register</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-overlay">
+            <h2 id="hero-title">Welcome to EventPortal</h2>
+            <p>Discover and register for exciting events near you.</p>
+            <button class="btn-hero" onclick="showEventCount()">View Available Events</button>
+        </div>
+    </section>
+
+    <section class="events-section" id="events">
+        <h2 class="section-title">Upcoming Events</h2>
+        <div id="event-count-banner" class="event-count-banner" style="display:none;"></div>
+        <div class="card-container">
+            <div class="event-card">
+                <img src="../HTML/images/workshop.png" alt="Workshop" class="card-img">
+                <div class="card-body">
+                    <h3>Tech Workshop</h3>
+                    <p class="event-date">August 10, 2025</p>
+                    <p class="event-venue">Chennai Convention Centre</p>
+                    <p>Learn the basics of web development in this hands-on workshop.</p>
+                    <button class="btn-register" onclick="selectEvent('Tech Workshop')">Register Now</button>
+                </div>
+            </div>
+            <div class="event-card">
+                <img src="../HTML/images/sports.png" alt="Sports" class="card-img">
+                <div class="card-body">
+                    <h3>Annual Sports Day</h3>
+                    <p class="event-date">August 18, 2025</p>
+                    <p class="event-venue">City Stadium, Bangalore</p>
+                    <p>Join us for a fun-filled day of sports and team activities.</p>
+                    <button class="btn-register" onclick="selectEvent('Annual Sports Day')">Register Now</button>
+                </div>
+            </div>
+            <div class="event-card">
+                <img src="../HTML/images/cultural.png" alt="Cultural" class="card-img">
+                <div class="card-body">
+                    <h3>Cultural Fest</h3>
+                    <p class="event-date">August 25, 2025</p>
+                    <p class="event-venue">Open Air Theatre, Mumbai</p>
+                    <p>Celebrate culture and creativity with performances and art.</p>
+                    <button class="btn-register" onclick="selectEvent('Cultural Fest')">Register Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="registration-section" id="register">
+        <h2 class="section-title">Event Registration</h2>
+        <div id="success-message" class="success-message" style="display:none;">
+            Registration submitted successfully! We will contact you soon.
+        </div>
+        <form class="registration-form" id="registration-form">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="Enter your full name">
+                <span class="error-text" id="name-error"></span>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Enter your email">
+                <span class="error-text" id="email-error"></span>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" placeholder="Enter your phone number">
+                <span class="error-text" id="phone-error"></span>
+            </div>
+            <div class="form-group">
+                <label for="event">Select Event</label>
+                <select id="event">
+                    <option value="">-- Select an Event --</option>
+                    <option value="Tech Workshop">Tech Workshop</option>
+                    <option value="Annual Sports Day">Annual Sports Day</option>
+                    <option value="Cultural Fest">Cultural Fest</option>
+                </select>
+                <span class="error-text" id="event-error"></span>
+            </div>
+            <button type="button" class="btn-submit" onclick="submitRegistration()">Submit Registration</button>
+        </form>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-info">
+            <p>Email: events@eventportal.com</p>
+            <p>Phone: +91 98765 43210</p>
+            <p>Address: 123 Event Street, Chennai, India</p>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <p>&copy; 2025 EventPortal. All rights reserved.</p>
+    </footer>
+
+    <script src="EventPortal.js"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventPortal - CSS Edition</title>
+    <link rel="stylesheet" href="EventPortal.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-content">
+            <h1 class="logo">EventPortal</h1>
+            <nav class="main-nav">
+                <a href="#events">Events</a>
+                <a href="#register">Register</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-overlay">
+            <h2>Welcome to EventPortal</h2>
+            <p>Discover and register for exciting events near you.</p>
+        </div>
+    </section>
+
+    <section class="events-section" id="events">
+        <h2 class="section-title">Upcoming Events</h2>
+        <div class="card-container">
+            <div class="event-card">
+                <div class="card-image workshop-img"></div>
+                <div class="card-body">
+                    <h3>Tech Workshop</h3>
+                    <p class="event-date">August 10, 2025</p>
+                    <p class="event-venue">Chennai Convention Centre</p>
+                    <p>Learn the basics of web development in this hands-on workshop.</p>
+                    <button class="btn-register">Register Now</button>
+                </div>
+            </div>
+            <div class="event-card">
+                <div class="card-image sports-img"></div>
+                <div class="card-body">
+                    <h3>Annual Sports Day</h3>
+                    <p class="event-date">August 18, 2025</p>
+                    <p class="event-venue">City Stadium, Bangalore</p>
+                    <p>Join us for a fun-filled day of sports and team activities.</p>
+                    <button class="btn-register">Register Now</button>
+                </div>
+            </div>
+            <div class="event-card">
+                <div class="card-image cultural-img"></div>
+                <div class="card-body">
+                    <h3>Cultural Fest</h3>
+                    <p class="event-date">August 25, 2025</p>
+                    <p class="event-venue">Open Air Theatre, Mumbai</p>
+                    <p>Celebrate culture and creativity with performances and art.</p>
+                    <button class="btn-register">Register Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="registration-section" id="register">
+        <h2 class="section-title">Event Registration</h2>
+        <form class="registration-form">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" placeholder="Enter your phone number">
+            </div>
+            <div class="form-group">
+                <label for="event">Select Event</label>
+                <select id="event">
+                    <option value="">-- Select an Event --</option>
+                    <option value="workshop">Tech Workshop</option>
+                    <option value="sports">Annual Sports Day</option>
+                    <option value="cultural">Cultural Fest</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-submit">Submit Registration</button>
+        </form>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-info">
+            <p>Email: events@eventportal.com</p>
+            <p>Phone: +91 98765 43210</p>
+            <p>Address: 123 Event Street, Chennai, India</p>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <p>&copy; 2025 EventPortal. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

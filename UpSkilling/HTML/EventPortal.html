@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventPortal - Discover Amazing Events</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        header {
+            background-color: #1a237e;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 26px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 0;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .hero-text {
+            background-color: #1a237e;
+            color: white;
+            padding: 30px;
+        }
+
+        .hero-text h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .hero-text p {
+            font-size: 16px;
+        }
+
+        .events {
+            padding: 40px 30px;
+            background-color: #f5f5f5;
+        }
+
+        .events h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #1a237e;
+        }
+
+        .card-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 280px;
+            overflow: hidden;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .card-body h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #1a237e;
+        }
+
+        .card-body p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 12px;
+        }
+
+        .card-body button {
+            background-color: #1a237e;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .card-body button:hover {
+            background-color: #283593;
+        }
+
+        .registration {
+            padding: 40px 30px;
+            background-color: white;
+        }
+
+        .registration h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #1a237e;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        form input,
+        form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        form button {
+            width: 100%;
+            padding: 12px;
+            background-color: #1a237e;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #283593;
+        }
+
+        .contact {
+            padding: 40px 30px;
+            background-color: #e8eaf6;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 28px;
+            color: #1a237e;
+            margin-bottom: 15px;
+        }
+
+        .contact p {
+            font-size: 15px;
+            margin-bottom: 6px;
+            color: #444;
+        }
+
+        footer {
+            background-color: #1a237e;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>EventPortal</h1>
+        <nav>
+            <a href="#events">Events</a>
+            <a href="#register">Register</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <img src="images/banner.jpg" alt="Event Banner">
+        <div class="hero-text">
+            <h2>Welcome to EventPortal</h2>
+            <p>Discover and register for exciting events near you.</p>
+        </div>
+    </section>
+
+    <section class="events" id="events">
+        <h2>Upcoming Events</h2>
+        <div class="card-container">
+            <div class="card">
+                <img src="images/workshop.png" alt="Workshop Event">
+                <div class="card-body">
+                    <h3>Tech Workshop</h3>
+                    <p>Date: August 10, 2025</p>
+                    <p>Venue: Chennai Convention Centre</p>
+                    <p>Learn the basics of web development in this hands-on workshop.</p>
+                    <button>Register Now</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/sports.png" alt="Sports Event">
+                <div class="card-body">
+                    <h3>Annual Sports Day</h3>
+                    <p>Date: August 18, 2025</p>
+                    <p>Venue: City Stadium, Bangalore</p>
+                    <p>Join us for a fun-filled day of sports and team activities.</p>
+                    <button>Register Now</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/cultural.png" alt="Cultural Event">
+                <div class="card-body">
+                    <h3>Cultural Fest</h3>
+                    <p>Date: August 25, 2025</p>
+                    <p>Venue: Open Air Theatre, Mumbai</p>
+                    <p>Celebrate culture and creativity with performances and art.</p>
+                    <button>Register Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="registration" id="register">
+        <h2>Event Registration</h2>
+        <form>
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Enter your full name">
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="Enter your email">
+
+            <label for="phone">Phone Number</label>
+            <input type="text" id="phone" placeholder="Enter your phone number">
+
+            <label for="event">Select Event</label>
+            <select id="event">
+                <option value="">-- Select an Event --</option>
+                <option value="workshop">Tech Workshop</option>
+                <option value="sports">Annual Sports Day</option>
+                <option value="cultural">Cultural Fest</option>
+            </select>
+
+            <button type="submit">Submit Registration</button>
+        </form>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: events@eventportal.com</p>
+        <p>Phone: +91 98765 43210</p>
+        <p>Address: 123 Event Street, Chennai, India</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 EventPortal. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
