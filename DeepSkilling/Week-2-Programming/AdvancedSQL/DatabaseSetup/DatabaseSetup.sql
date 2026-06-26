@@ -1,0 +1,19 @@
+CREATE DATABASE CTSDB;
+GO
+
+USE CTSDB;
+GO
+
+CREATE TABLE Employee(
+	Id INT PRIMARY KEY,
+	Name VARCHAR(50),
+	Dept VARCHAR(30),
+	Salary INT
+);
+
+INSERT INTO Employee VALUES
+(1,'Ram','HR',25000),
+(2,'Sam','IT',40000),
+(3,'Raj','IT',35000),
+(4,'John','HR',30000),
+(5,'David','Sales',45000);

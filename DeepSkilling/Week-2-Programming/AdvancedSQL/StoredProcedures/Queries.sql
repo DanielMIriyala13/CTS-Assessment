@@ -1,0 +1,19 @@
+USE CTSDB;
+
+DELIMITER $$
+
+CREATE PROCEDURE GetEmp()
+BEGIN
+	SELECT * FROM Employee;
+END$$
+
+CREATE PROCEDURE GetDept(IN d VARCHAR(30))
+BEGIN
+	SELECT * FROM Employee WHERE Dept=d;
+END$$
+
+DELIMITER ;
+
+CALL GetEmp();
+
+CALL GetDept('IT');
