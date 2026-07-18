@@ -1,32 +1,18 @@
-using Microsoft.EntityFrameworkCore;
-using ProductService.Data;
+using System.ComponentModel.DataAnnotations;
 
-var builder = WebApplication.CreateBuilder(args);
-
-// Add services
-builder.Services.AddControllers();
-
-builder.Services.AddEndpointsApiExplorer();
-
-builder.Services.AddSwaggerGen();
-
-builder.Services.AddDbContext<ProductDbContext>(options =>
-    options.UseSqlServer(
-        builder.Configuration.GetConnectionString("DefaultConnection")));
-
-var app = builder.Build();
-
-// Configure middleware
-if (app.Environment.IsDevelopment())
+namespace ProductService.Models
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    public class Product
+    {
+        [Key]
+        public int ProductId { get; set; }
+
+        public string Name { get; set; }
+
+        public decimal Price { get; set; }
+
+        public int Stock { get; set; }
+
+        public int CategoryId { get; set; }
+    }
 }
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();

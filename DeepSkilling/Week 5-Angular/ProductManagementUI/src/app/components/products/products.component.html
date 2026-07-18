@@ -1,0 +1,163 @@
+<div class="products-header">
+  <div>
+    <h1>Products Inventory</h1>
+    <p class="subtitle">Manage products, adjust stock status, and classify items under categories.</p>
+  </div>
+  <button class="btn-primary" (click)="openAddModal()">
+    <span>➕</span> Add Product
+  </button>
+</div>
+
+<!-- Filters Bar -->
+<div class="card-premium filters-bar">
+  <div class="filter-group">
+    <label class="form-label" style="margin-bottom: 0; min-width: 120px;" for="filterCategory">Filter by Category:</label>
+    <select 
+      id="filterCategory" 
+      class="form-control" 
+      style="max-width: 250px;" 
+      [(ngModel)]="selectedCategoryId" 
+      (change)="applyFilter()"
+    >
+      <option value="all">All Categories</option>
+      <option *ngFor="let cat of categories" [value]="cat.categoryId">
+        {{ cat.categoryName }}
+      </option>
+    </select>
+  </div>
+  <div class="filter-summary">
+    Showing <strong style="color: var(--accent-primary);">{{ filteredProducts.length }}</strong> products
+  </div>
+</div>
+
+<div class="card-premium" style="margin-top: 1.5rem;">
+  <div class="table-responsive" *ngIf="filteredProducts.length > 0; else emptyState">
+    <table class="table-custom animate-fade-in">
+      <thead>
+        <tr>
+          <th style="width: 80px;">ID</th>
+          <th>Product Name</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>Stock Level</th>
+          <th style="width: 120px; text-align: right;">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let prod of filteredProducts">
+          <td style="font-family: monospace; color: var(--text-secondary);">{{ prod.productId }}</td>
+          <td style="font-weight: 600;">{{ prod.name }}</td>
+          <td><span class="badge badge-cyan">{{ getCategoryName(prod.categoryId) }}</span></td>
+          <td style="font-weight: 500;">${{ prod.price | number:'1.2-2' }}</td>
+          <td>
+            <span class="badge" 
+                  [class.badge-rose]="prod.stock === 0" 
+                  [class.badge-amber]="prod.stock > 0 && prod.stock <= 10"
+                  [class.badge-emerald]="prod.stock > 10">
+              {{ prod.stock === 0 ? 'Out of stock' : prod.stock + ' units' }}
+            </span>
+          </td>
+          <td style="text-align: right;">
+            <div style="display: inline-flex; gap: 0.5rem;">
+              <button class="btn-icon edit" (click)="openEditModal(prod)" title="Edit Product">
+                ✏️
+              </button>
+              <button class="btn-icon delete" (click)="deleteProduct(prod.productId)" title="Delete Product">
+                🗑️
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <ng-template #emptyState>
+    <div class="empty-state animate-fade-in">
+      <p style="font-size: 1.125rem; margin-bottom: 0.5rem;">No Products Found</p>
+      <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 1.5rem;">
+        No products match the selected criteria or none have been created yet.
+      </p>
+      <button class="btn-primary" (click)="openAddModal()" *ngIf="categories.length > 0">
+        Create First Product
+      </button>
+      <div *ngIf="categories.length === 0" style="color: var(--accent-warning);">
+        ⚠️ You must create at least one category before you can add products.
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+<!-- Modal Form -->
+<div class="modal-overlay" *ngIf="showModal" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>{{ isEditMode ? 'Edit Product' : 'Create Product' }}</h2>
+      <button class="btn-icon" (click)="closeModal()">✕</button>
+    </div>
+    
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="form-label" for="prodName">Product Name *</label>
+        <input 
+          type="text" 
+          id="prodName" 
+          class="form-control" 
+          placeholder="e.g. Ultra Gaming Keyboard"
+          [(ngModel)]="currentProduct.name" 
+          required
+        />
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label" for="prodCategory">Category *</label>
+        <select 
+          id="prodCategory" 
+          class="form-control" 
+          [(ngModel)]="currentProduct.categoryId"
+          required
+        >
+          <option *ngFor="let cat of categories" [value]="cat.categoryId">
+            {{ cat.categoryName }}
+          </option>
+        </select>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+        <div class="form-group">
+          <label class="form-label" for="prodPrice">Price ($) *</label>
+          <input 
+            type="number" 
+            id="prodPrice" 
+            class="form-control" 
+            step="0.01" 
+            min="0"
+            placeholder="0.00"
+            [(ngModel)]="currentProduct.price" 
+            required
+          />
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="prodStock">Stock Quantity *</label>
+          <input 
+            type="number" 
+            id="prodStock" 
+            class="form-control" 
+            min="0"
+            placeholder="0"
+            [(ngModel)]="currentProduct.stock" 
+            required
+          />
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal-footer">
+      <button class="btn-secondary" (click)="closeModal()">Cancel</button>
+      <button class="btn-primary" (click)="saveProduct()">
+        {{ isEditMode ? 'Save Changes' : 'Create' }}
+      </button>
+    </div>
+  </div>
+</div>

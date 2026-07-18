@@ -1,0 +1,95 @@
+<div class="categories-header">
+  <div>
+    <h1>Categories Catalog</h1>
+    <p class="subtitle">Organize your inventory catalog by managing product classifications and hierarchies.</p>
+  </div>
+  <button class="btn-primary" (click)="openAddModal()">
+    <span>➕</span> Add Category
+  </button>
+</div>
+
+<div class="card-premium">
+  <div class="table-responsive" *ngIf="categories.length > 0; else emptyState">
+    <table class="table-custom animate-fade-in">
+      <thead>
+        <tr>
+          <th style="width: 100px;">ID</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th style="width: 120px; text-align: right;">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cat of categories">
+          <td style="font-family: monospace; color: var(--accent-primary);">{{ cat.categoryId }}</td>
+          <td style="font-weight: 600;">{{ cat.categoryName }}</td>
+          <td style="color: var(--text-secondary);">{{ cat.description || 'No description provided' }}</td>
+          <td style="text-align: right;">
+            <div style="display: inline-flex; gap: 0.5rem;">
+              <button class="btn-icon edit" (click)="openEditModal(cat)" title="Edit Category">
+                ✏️
+              </button>
+              <button class="btn-icon delete" (click)="deleteCategory(cat.categoryId)" title="Delete Category">
+                🗑️
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <ng-template #emptyState>
+    <div class="empty-state animate-fade-in">
+      <p style="font-size: 1.125rem; margin-bottom: 0.5rem;">No Categories Found</p>
+      <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 1.5rem;">
+        Get started by creating a new category classification.
+      </p>
+      <button class="btn-primary" (click)="openAddModal()">
+        Create First Category
+      </button>
+    </div>
+  </ng-template>
+</div>
+
+<!-- Modal Form -->
+<div class="modal-overlay" *ngIf="showModal" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>{{ isEditMode ? 'Edit Category' : 'Create Category' }}</h2>
+      <button class="btn-icon" (click)="closeModal()">✕</button>
+    </div>
+    
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="form-label" for="categoryName">Category Name *</label>
+        <input 
+          type="text" 
+          id="categoryName" 
+          class="form-control" 
+          placeholder="e.g. Home Appliances"
+          [(ngModel)]="currentCategory.categoryName" 
+          required
+        />
+      </div>
+      
+      <div class="form-group" style="margin-bottom: 0;">
+        <label class="form-label" for="description">Description</label>
+        <textarea 
+          id="description" 
+          class="form-control" 
+          rows="3" 
+          placeholder="Describe this category..."
+          [(ngModel)]="currentCategory.description"
+        ></textarea>
+      </div>
+    </div>
+    
+    <div class="modal-footer">
+      <button class="btn-secondary" (click)="closeModal()">Cancel</button>
+      <button class="btn-primary" (click)="saveCategory()">
+        {{ isEditMode ? 'Save Changes' : 'Create' }}
+      </button>
+    </div>
+  </div>
+</div>

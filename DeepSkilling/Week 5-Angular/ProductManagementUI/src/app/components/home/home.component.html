@@ -1,0 +1,89 @@
+<div class="dashboard-header">
+  <h1>Daniel Stock</h1>
+  <p class="subtitle">Monitor inventory metrics, product catalogs, and category hierarchies at a glance.</p>
+</div>
+
+<div class="stats-grid">
+  <div class="stat-card card-premium">
+    <div class="stat-info">
+      <h3>Total Products</h3>
+      <p class="stat-value">{{ totalProducts }}</p>
+    </div>
+  </div>
+
+  <div class="stat-card card-premium">
+    <div class="stat-info">
+      <h3>Categories</h3>
+      <p class="stat-value">{{ totalCategories }}</p>
+    </div>
+  </div>
+
+  <div class="stat-card card-premium">
+    <div class="stat-info">
+      <h3>Low Stock</h3>
+      <p class="stat-value">{{ lowStockCount }}</p>
+    </div>
+  </div>
+
+  <div class="stat-card card-premium" [class.danger-glow]="outOfStockCount > 0">
+    <div class="stat-info">
+      <h3>Out of Stock</h3>
+      <p class="stat-value">{{ outOfStockCount }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="dashboard-main-grid">
+  <!-- Recent Products -->
+  <div class="card-premium recent-products-section">
+    <h2>Recent Additions</h2>
+    <div class="table-responsive" *ngIf="recentProducts.length > 0; else noProducts">
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Stock</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of recentProducts">
+            <td style="font-weight: 500;">{{ product.name }}</td>
+            <td><span class="badge badge-cyan">{{ getCategoryName(product.categoryId) }}</span></td>
+            <td>${{ product.price | number:'1.2-2' }}</td>
+            <td>
+              <span class="badge" 
+                    [class.badge-rose]="product.stock === 0" 
+                    [class.badge-amber]="product.stock > 0 && product.stock <= 10"
+                    [class.badge-emerald]="product.stock > 10">
+                {{ product.stock === 0 ? 'Out of stock' : product.stock + ' units' }}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ng-template #noProducts>
+      <div class="empty-state">
+        <p>No products available. Start by adding a product.</p>
+      </div>
+    </ng-template>
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="card-premium quick-actions-section">
+    <h2>Quick Actions</h2>
+    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.875rem;">
+      Use these shortcuts to manage product records and categorizations.
+    </p>
+    <div class="actions-list">
+      <a routerLink="/products" class="btn-primary">
+        Go to Products
+      </a>
+      <a routerLink="/categories" class="btn-secondary" style="margin-top: 0.75rem; justify-content: center;">
+        Go to Categories
+      </a>
+    </div>
+  </div>
+</div>
